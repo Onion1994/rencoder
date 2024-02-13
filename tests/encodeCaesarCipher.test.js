@@ -37,4 +37,12 @@ describe("encodeCaesarCipher", () => {
     const actual = encodeCaesarCipher(input, 5);
     expect(actual).toBe(expected);
   });
+  test("when passed a number greater than or equal to the alphabet's length, it should wrap around the alphabet", () => {
+    const input =
+      "Hello World! This is a test to check a number greater than or equal to 26.";
+    const expected =
+      "Jgnnq Yqtnf! Vjku ku c vguv vq ejgem c pwodgt itgcvgt vjcp qt gswcn vq 26.";
+    const actual = encodeCaesarCipher(input, 80);
+    expect(actual).toBe(expected);
+  });
 });
