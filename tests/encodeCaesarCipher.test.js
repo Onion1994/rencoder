@@ -1,4 +1,8 @@
-const encodeCaesarCipher = require("../lib/encodeCaesarCipher");
+const {
+  encodeCaesarCipher,
+  getShiftedAlphabet,
+  createAlphabetMap,
+} = require("../lib/encodeCaesarCipher");
 
 describe("encodeCaesarCipher", () => {
   test("when passed an empty string, it should return an empty string", () => {
@@ -44,5 +48,94 @@ describe("encodeCaesarCipher", () => {
       "Jgnnq Yqtnf! Vjku ku c vguv vq ejgem c pwodgt itgcvgt vjcp qt gswcn vq 26.";
     const actual = encodeCaesarCipher(input, 80);
     expect(actual).toBe(expected);
+  });
+});
+
+describe("getShiftedAlphabet", () => {
+  test("should return the alphabet if passed 0", () => {
+    const expected = "abcdefghijklmnopqrstuvwxyz";
+    const actual = getShiftedAlphabet(0);
+    expect(actual).toBe(expected);
+  });
+  test("when passed a number greater than or equal to the alphabet's length, it should wrap around the alphabet", () => {
+    const expected = "yzabcdefghijklmnopqrstuvwx";
+    const actual = getShiftedAlphabet(76);
+    expect(actual).toBe(expected);
+  });
+});
+
+describe("getShiftedAlphabet", () => {
+  test("should return the alphabet if passed 0", () => {
+    const expected = "abcdefghijklmnopqrstuvwxyz";
+    const actual = getShiftedAlphabet(0);
+    expect(actual).toBe(expected);
+  });
+  test("when passed a number greater than or equal to the alphabet's length, it should wrap around the alphabet", () => {
+    const expected = "yzabcdefghijklmnopqrstuvwx";
+    const actual = getShiftedAlphabet(76);
+    expect(actual).toBe(expected);
+  });
+});
+
+describe("createAlphabetMap", () => {
+  test("should return a Map object that maps each letter from the alphabet to the corresponding shifted letter, both in lowercase and uppercase", () => {
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    const shiftedAlphabet = "yzabcdefghijklmnopqrstuvwx";
+    const expected = {
+      a: "y",
+      A: "Y",
+      b: "z",
+      B: "Z",
+      c: "a",
+      C: "A",
+      d: "b",
+      D: "B",
+      e: "c",
+      E: "C",
+      f: "d",
+      F: "D",
+      g: "e",
+      G: "E",
+      h: "f",
+      H: "F",
+      i: "g",
+      I: "G",
+      j: "h",
+      J: "H",
+      k: "i",
+      K: "I",
+      l: "j",
+      L: "J",
+      m: "k",
+      M: "K",
+      n: "l",
+      N: "L",
+      o: "m",
+      O: "M",
+      p: "n",
+      P: "N",
+      q: "o",
+      Q: "O",
+      r: "p",
+      R: "P",
+      s: "q",
+      S: "Q",
+      t: "r",
+      T: "R",
+      u: "s",
+      U: "S",
+      v: "t",
+      V: "T",
+      w: "u",
+      W: "U",
+      x: "v",
+      X: "V",
+      y: "w",
+      Y: "W",
+      z: "x",
+      Z: "X",
+    };
+    const actual = createAlphabetMap(alphabet, shiftedAlphabet);
+    expect(Object.fromEntries(actual)).toMatchObject(expected);
   });
 });
