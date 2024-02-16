@@ -13,8 +13,10 @@ describe("decodeCaesarCipher", () => {
     expect(actual).toEqual(expected);
   });
   test("when passed an encoded string and no number, it should return an array with shifted strings that are most likely right, excluding all others", () => {
-    const input = "Olssv Dvysk!";
-    const expected = "Hello World!";
+    const input =
+      "Aopz pz h alza av joljr pm aopz zaypun pz wpjrlk bw if aol shunbhnl klaljavy.";
+    const expected =
+      "This is a test to check if this string is picked up by the language detector.";
     const actual = decodeCaesarCipher(input);
     expect(actual).toContain(expected);
     expect(actual.length).toBeLessThan(25);
