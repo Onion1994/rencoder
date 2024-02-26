@@ -19,7 +19,7 @@ describe("decodeCaesarCipher", () => {
       "This is a test to check if this string is picked up by the language detector.";
     const actual = decodeCaesarCipher(input);
     expect(actual).toContain(expected);
-    expect(actual.length).toBeLessThan(25);
+    expect(actual.length).toBeLessThan(5);
   });
   test("when passed a string and a number, it should return the string shifted by the provided number", () => {
     const input = "Jgnnq Yqtnf!";

@@ -1,3 +1,4 @@
+const decodeCaesarCipher = require("../lib/decodeCaesarCipher");
 const {
   encodeCaesarCipher,
   getShiftedAlphabet,
@@ -48,6 +49,13 @@ describe("encodeCaesarCipher", () => {
       "Jgnnq Yqtnf! Vjku ku c vguv vq ejgem c pwodgt itgcvgt vjcp qt gswcn vq 26.";
     const actual = encodeCaesarCipher(input, 80);
     expect(actual).toBe(expected);
+  });
+  test("when no number is passed, it should generate a random number to encode the string", () => {
+    const input =
+      "Hello World! This is a test to check if a string can be encoded without passing a number.";
+    const encodedString = encodeCaesarCipher(input);
+    const actual = decodeCaesarCipher(encodedString);
+    expect(actual).toContain(input);
   });
 });
 
