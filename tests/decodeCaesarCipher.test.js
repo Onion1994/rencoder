@@ -12,14 +12,19 @@ describe("decodeCaesarCipher", () => {
     const actual = decodeCaesarCipher(input);
     expect(actual).toEqual(expected);
   });
-  test("when passed an encoded string and no number, it should return an array with shifted strings that are most likely right, excluding all others", () => {
+  test("when passed an encoded string and no number, it should return the correct decoded string", () => {
     const input =
-      "Aopz pz h alza av joljr pm aopz zaypun pz wpjrlk bw if aol shunbhnl klaljavy.";
+      "Olssv Dvysk. Aopz pz h alza av joljr dolaoly aol kljvkpun tlaovk ylabyuz aol jvyylja zaypun.";
     const expected =
-      "This is a test to check if this string is picked up by the language detector.";
+      "Hello World. This is a test to check whether the decoding method returns the correct string.";
     const actual = decodeCaesarCipher(input);
-    expect(actual).toContain(expected);
-    expect(actual.length).toBeLessThan(5);
+    expect(actual).toBe(expected);
+  });
+  test("when passed an encoded string and no number, it should return an array of all possible correct strings if there are multiple potentially correct strings", () => {
+    const input = "xy qbb";
+    const expected = ["hi all", "ab tee"];
+    const actual = decodeCaesarCipher(input);
+    expect(actual).toEqual(expected);
   });
   test("when passed a string and a number, it should return the string shifted by the provided number", () => {
     const input = "Jgnnq Yqtnf!";

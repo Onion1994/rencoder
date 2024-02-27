@@ -54,8 +54,9 @@ describe("encodeCaesarCipher", () => {
     const input =
       "Hello World! This is a test to check if a string can be encoded without passing a number.";
     const encodedString = encodeCaesarCipher(input);
-    const actual = decodeCaesarCipher(encodedString);
-    expect(actual).toContain(input);
+    const decodedString = decodeCaesarCipher(encodedString);
+    expect(encodedString).not.toBe(input);
+    expect(decodedString).toBe(input);
   });
 });
 
@@ -65,17 +66,9 @@ describe("getShiftedAlphabet", () => {
     const actual = getShiftedAlphabet(0);
     expect(actual).toBe(expected);
   });
-  test("when passed a number greater than or equal to the alphabet's length, it should wrap around the alphabet", () => {
-    const expected = "yzabcdefghijklmnopqrstuvwx";
-    const actual = getShiftedAlphabet(76);
-    expect(actual).toBe(expected);
-  });
-});
-
-describe("getShiftedAlphabet", () => {
-  test("should return the alphabet if passed 0", () => {
-    const expected = "abcdefghijklmnopqrstuvwxyz";
-    const actual = getShiftedAlphabet(0);
+  test("when passed a number smaller than the alphabet's length and greater than 0, it should return the alphabet shifted by that number", () => {
+    const expected = "hijklmnopqrstuvwxyzabcdefg";
+    const actual = getShiftedAlphabet(7);
     expect(actual).toBe(expected);
   });
   test("when passed a number greater than or equal to the alphabet's length, it should wrap around the alphabet", () => {
