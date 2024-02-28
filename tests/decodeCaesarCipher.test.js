@@ -27,9 +27,15 @@ describe("decodeCaesarCipher", () => {
     expect(actual).toEqual(expected);
   });
   test("when passed a string and a number, it should return the string shifted by the provided number", () => {
-    const input = "Jgnnq Yqtnf!";
-    const expected = "Hello World!";
-    const actual = decodeCaesarCipher(input, 2);
+    const input = "Czggj rjmgy!";
+    const expected = "Zwddg ogjdv!";
+    const actual = decodeCaesarCipher(input, 3);
     expect(actual).toBe(expected);
+  });
+  test("when passed no number and a string that does not have a possible encoding solution, it should return an empty array", () => {
+    const input = "lwozwzs";
+    const expected = [];
+    const actual = decodeCaesarCipher(input);
+    expect(actual).toEqual(expected);
   });
 });
