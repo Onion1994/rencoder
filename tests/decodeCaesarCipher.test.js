@@ -32,7 +32,7 @@ describe("decodeCaesarCipher", () => {
     const actual = decodeCaesarCipher(input, 3);
     expect(actual).toBe(expected);
   });
-  test("when passed no number and a string that does not have a possible encoding solution, it should return an empty array", () => {
+  test("when passed no number and a string that does not have a possible decoding solution, it should return an empty array", () => {
     const input = "lwozwzs";
     const expected = [];
     const actual = decodeCaesarCipher(input);
